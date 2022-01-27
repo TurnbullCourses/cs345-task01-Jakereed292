@@ -38,13 +38,23 @@ public class BankAccount {
         }
     }
 
-
     public static boolean isEmailValid(String email){
+      
         if (email.indexOf('@') == -1){
             return false;
         }
-        else {
+        else if(email.isEmpty()){
+                return false;
+        }
+        else if(email.substring(email.indexOf('@')).length() == 1){
+            return false;
+        }
+        else if(email.indexOf('@') == 0){
+            return false;
+        }
+        else{
             return true;
         }
+
     }
 }
