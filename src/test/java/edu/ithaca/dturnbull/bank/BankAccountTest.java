@@ -30,6 +30,7 @@ class BankAccountTest {
         assertFalse(BankAccount.isEmailValid("@gmail.com")); //This email address has no username, so its a border case
         assertTrue(BankAccount.isEmailValid("abc_abc@gmail.com")); // A possible email address, its complete so its not a boder case.
         
+        
     }
 
     @Test
