@@ -25,11 +25,20 @@ class BankAccountTest {
     @Test
     void isEmailValidTest(){
         assertTrue(BankAccount.isEmailValid( "a@b.com"));   // valid email address
-        assertFalse( BankAccount.isEmailValid("")); // empty string, invalid, cannot be an email as it doesnt have a username & domainname, border case
+        assertFalse(BankAccount.isEmailValid("")); // empty string, invalid, cannot be an email as it doesnt have a username & domainname, border case
         assertFalse(BankAccount.isEmailValid("ab@")); // This email address doesnt have domain name so its a border case
         assertFalse(BankAccount.isEmailValid("@gmail.com")); //This email address has no username, so its a border case
         assertTrue(BankAccount.isEmailValid("abc_abc@gmail.com")); // A possible email address, its complete so its not a boder case.
-        
+        assertTrue(BankAccount.isEmailValid("abc@gmail.com"));
+        assertTrue(BankAccount.isEmailValid("abc.abc@gmail.com"));
+        assertFalse(BankAccount.isEmailValid(".abc@gmail.com"));
+        assertFalse(BankAccount.isEmailValid("abc-@gmail.com"));
+        assertFalse(BankAccount.isEmailValid("abc$abc@gmail.com"));
+        assertFalse(BankAccount.isEmailValid("abc@gmail$com"));
+        assertFalse(BankAccount.isEmailValid("abc@gmail..com"));
+        assertTrue(BankAccount.isEmailValid("abc@gmail.cc"));
+        assertFalse(BankAccount.isEmailValid("abc@gmail.c"));
+        assertTrue(BankAccount.isEmailValid("abc@mail-room.com"));
     }
 
     @Test
