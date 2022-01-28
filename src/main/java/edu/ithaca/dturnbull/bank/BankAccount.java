@@ -39,22 +39,41 @@ public class BankAccount {
     }
 
     public static boolean isEmailValid(String email){
-      
-        if (email.indexOf('@') == -1){
+      //  String specialCharactersString = "!@#$%&*()'+,-./:;<=>?[]^_`{|}";
+       if (email.indexOf('@') == -1){
+            return false;
+        }
+        else if(email.length() <= 3){
             return false;
         }
         else if(email.isEmpty()){
                 return false;
         }
-        else if(email.substring(email.indexOf('@')).length() == 1){
+        else if(email.indexOf('@') == 0 || email.indexOf('.') == 0 ){ //34
             return false;
         }
-        else if(email.indexOf('@') == 0){
+        else if(!Character.isLetter(email.charAt(email.indexOf('@') - 1))){ //35
             return false;
+        }
+        else if(email.contains("$") || email.contains("!") || email.contains("#")){ //36
+            return false;
+        }
+        else if(email.charAt(email.indexOf('.')) == email.charAt(email.indexOf('.') + 1)){ // 38
+            return false;
+        }
+        // else if(email.lastIndexOf('.') <= email.length()- 2){
+        //     return false;    
+        // }
+        else if(email.lastIndexOf('.')+ 2 >= email.length()){
+            return false;    
         }
         else{
             return true;
         }
 
+    }
+
+    public static void main(String[] args) {
+        BankAccount.isEmailValid("abc@gmail.c");
     }
 }
